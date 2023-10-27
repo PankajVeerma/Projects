@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Reset Password {% endblock title %}
+{% block content %}
+
+<div class="card bg-light p-5">
+
+    {% for message in messages %}
+  
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+  
+
+
+
+
+    <h2 data-aos="fade-up text-dark" >Request a Reset Link</h2>
+    <form action="/auth/request-reset-email/" method="post">{% csrf_token %}
+   
+    <div class="mb-3 pd-3">
+      <label for="exampleInputEmail" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail" name="exampleInputEmail" aria-describedby="emailHelp">
+    
+    </div>
+    
+    <button type="submit" class="btn btn-primary">submit</button>
+    <br>
+     <div class="sign bg-primary"></div>
+  <a href="/">GoBAck</a>
+  </br>
+  </form>
+  </div>
+  {% endblock content %}
