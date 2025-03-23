@@ -1,0 +1,27 @@
+
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom">
+         Log In
+      </legend>
+      {{form}}
+    </fieldset>
+    <div class="form-group">
+      <button href='' class='btn' type='submit'>Sign In</button>
+    </div>
+  </form>
+    <div class="form-group">
+      <small class=text-muted>
+                 Need an Account?
+                 <a class="" href="{% url 'register' %}">Create an Account</a>
+      </small>
+    </div>
+  
+</div>
+{% endblock content %}

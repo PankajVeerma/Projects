@@ -117,8 +117,8 @@ USE_TZ = True
 #sending Email  
 
 # EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'senders email-id'
-# EMAIL_HOST_PASSWORD = 'password associated with above email-id'
+# EMAIL_HOST_USER = 'pankajverma@knmiet.edu'
+# EMAIL_HOST_PASSWORD = '1234@1234'
 # EMAIL_PORT = 587
 
 

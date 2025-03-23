@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<section>
+  <h2>Search Books and Browse yourfavorite</h2>
+  <p>Just Enter the search query to obtain the results</p>
+  <form method="post">
+    {% csrf_token %} 
+    {{form}}
+    <input type="submit" name="search" id="search" placeholder="Search Books" value="submit" />
+  </form>
+  {% for result in results %}
+  
+  <a href="{{result.preview}}">
+    <div>
+      <div>
+        <div>
+          <img src="{{result.thumbnail}}" alt="book1" />
+          <h3>Book1</h3>
+        </div>
+        <div>
+          <h3>{{result.title}}</h3>
+          <b>
+            <u>
+              <h5>{{result.subtitle}}</h5>
+            </u>
+          </b>
+          {% if result.description %}
+          <h6>{{result.description}}</h6>
+          {% endif %}
+           {% if result.categories %}
+          <b>
+            <h6>
+              Category: {% for category in result.categories %} {{category}} 
+              {% endfor %}
+            </h6> 
+          </b>
+            {% endif %} 
+            {% if result.count %}
+            <h6>Pages :{{result.count}}</h6>
+            {% endif %} 
+            {% if rating %}
+            <h6>Rating:{{result.rating}}</h6>
+            {% endif %}
+            <h6>{{result.authors}}</h6>
+         
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+{% endblock content %}

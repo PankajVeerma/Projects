@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+  <h1>Home Work</h1>
+  <div class="container">
+<!-- This is the container that holds the table of homework details. -->
+ {% if not homework_done %}
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Subject</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for work in homework %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{work.subject}}</td>
+          <td>{{work.title}}</td>
+          <td>{{work.description}}</td>
+          <td>{{work.due}}</td>
+          <td>
+            <a href="{% url 'update_homework' work.id %}">
+              <div>
+                {% if work.is_finished == True %}
+                <input type="checkbox" name="status" id="status" value="status" checked>
+                {% else %}
+                <input type="checkbox" name="status" id="status" value="status">
+                {% endif %}
+                <label >Mark as completed</label>
+               
+              </div>
+            </a>
+          </td>
+          <td><a href="{% url 'dalete_homework' work.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+<!-- This is the for loop that iterates over the homework queryset and displays the homework details in a table. -->
+      </tbody>
+    </table>
+    {% else %}
+    <h4>All Home work is completed! Create to have more</h4>
+    {% endif %}
+  </div>
+  <div class="container">
+    <form action="" method='post'>
+      {% csrf_token %}
+      <fieldset>
+        <legend>Create HomeWork</legend>
+        {{form}}
+      </fieldset>
+      <div>
+        <button type='submit'>Create</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+
+{% endblock content %}

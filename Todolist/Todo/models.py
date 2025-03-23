@@ -19,10 +19,15 @@ class Todo(models.Model):
         ('8','8️⃣'),
         ('9','9️⃣'),
         ('10','🔟'),
-      
+       
     ]
     title = models.CharField(max_length=50)
     status = models.CharField(max_length=2, choices=status_choices)
     user = models.ForeignKey(User  , on_delete=models.CASCADE)
     data = models.DateField(auto_now_add=True)
     priority = models.CharField(max_length= 2 ,choices=priority_choices)
+
+
+    def __str__(self):
+        return self.title
+    

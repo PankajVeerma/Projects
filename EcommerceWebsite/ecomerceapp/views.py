@@ -9,8 +9,8 @@ MERCHANT_KEY=keys.MK
 import json
 from django.views.decorators.csrf import  csrf_exempt
 from PayTm import Checksum
+import re
 
-# Create your views here.
 # Create your views here.
 
 def home(request):
@@ -121,14 +121,16 @@ def profile(request):
     currentuser = request.user.username
     items = Orders.objects.filter(email=currentuser)
     rid=""
+    
     for i in items:
        print(i.oid)
-       # print(i.order_id)
+       print(i.order_id)
        myid=i.oid
        rid=myid.replace("Shopy","")
        print(rid)
-    status=OrderUpdate.objects.filter(order_id=int(rid))
-    
+      
+    status=OrderUpdate.objects.filter(order_id = map(int, (rid)))
+   
     for j in status:
          print(j.update_desc)
          print(j.delivered)

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Study Portal</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1><a href="#">Student Study</a></h1>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+
+        <ul class="nav-links">
+          <li><a href="#">Books</a></li>
+          <li><a href="#">Wikipedia</a></li>
+          <li><a href="#">Dictonary</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">To-do</a></li>
+          <li><a href="#">Homework</a></li>
+          <li><a href="#">Notes</a></li>
+          <li><a href="#">Conversion</a></li>
+        </ul>
+        <ul class="nav-links">
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Logout</a></li>
+          <li><a href="#">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {% if messages %}
+       {% for msg in messages %}
+      <div>
+        <h3>{{msg.tags}}</h3>
+        <h5>{{msg}}</h5>
+      </div>
+      {% endfor %} 
+      {% endif %}
+       {% block content %}
+       
+        {% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2025 Study Portal</p>
+    </footer>
+  </body>
+</html>

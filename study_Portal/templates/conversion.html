@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <legend class="border-bottom"></legend>
+      {{form}}
+    <button href="" class="btn" type="submit">
+      Select
+    </button>
+  </div>
+     {% if input %}
+    <fieldset class="form-group">
+      <legend class="Border-bottom">
+        <div>{{m_form.input}}</div>
+        <br>
+        <div>{{m_form.measure1}}</div>
+        <br>
+        <div>{{m_form.measure2}}</div>
+        <br>
+      </legend>
+    </fieldset>
+    <fieldset class="form-group">
+     {{answer}}
+    </fieldset>
+    <div class="form-group">
+      <button href="" class="btn" type="submit">Convert</button>
+    </div>
+    {% endif %}
+  </form>
+</div>  
+</section>
+{% endblock content %}

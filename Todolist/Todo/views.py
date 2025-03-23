@@ -88,3 +88,9 @@ def change_status(request,id ,status):
     todo.status = status
     todo.save()
     return redirect('home')
+
+
+
+
+
+# https://www.youtube.com/watch?v=liho9xN1-CU      Reference from this video(Youtube) 

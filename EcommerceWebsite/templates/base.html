@@ -4,23 +4,24 @@
 <html lang="en">
 
 <head>
-
-
-
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"> -->
 
   <title>
-{% block title %}{% endblock title %}
+    {% block title %}
+
+    {% endblock title %}
   </title>
   <meta content="Ecomerce website we deliver procdut in one hour" name="description">
   <meta content="ecomerce" name="amazon, flipkart, selling,product,online shoping, ">
 
   <!-- Favicons -->
-  
+
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,12 +30,14 @@
   <link href="{% static '/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static '/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static '/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Template Main CSS File -->
   <link href="{% static '/assets/css/style.css' %}" rel="stylesheet">
 
-  
+
 </head>
 
 <body>
@@ -43,40 +46,45 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
 
-     
+
       <!-- Uncomment below if you prefer to use an image logo -->
-       <a href="/" class="logo"><img src="/static/assets/img/logo2.PNG" alt="" class="img-fluid">SHOPY</a>
-       
+      <a href="/" class="logo"><img src="/static/assets/img/logo2.PNG" alt="" class="img-fluid">SHOPY</a>
+
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="/"><i class="fa-sharp fa-solid fa-house"></i>Home</a></li>
-           <li><a class="nav-link scrollto " href="/about">Blog</a></li>
-             <li><a class="nav-link scrollto" href="/about">About</a></li>
-           <li><a class="nav-link scrollto " href="/checkout">checkOut</a></li>
-           <li><a class="nav-link scrollto " href="/profile"><i class="fa-solid fa-user"></i>My Profile</a></li>
-        
-           <button type="button" class=" nav-link scrollto btn btn-danger p-3 m-3 text-white" id="popcart" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover" data-html="true"> <i class="fa-solid fa-cart-shopping"></i>   cart(<span id="cart">0</span>)
-         </button>
-         
-         {% if request.user.is_authenticated %}
-         <li><a class="nav-link scrollto" href="/auth/logout/"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>LogOut</a></li>
-          {% else %}
-           <li class="dropdown"><a href="#"><span>SignIn</span> <i class="bi bi-chevron-down">
+          <li><a class="nav-link scrollto " href="/about">Blog</a></li>
+          <li><a class="nav-link scrollto" href="/about">About</a></li>
+          <li><a class="nav-link scrollto " href="/checkout">checkOut</a></li>
+          <li><a class="nav-link scrollto " href="/profile"><i class="fa-solid fa-user"></i>My Profile</a></li>
 
-           </i></a>
+          <button type="button" class=" nav-link scrollto btn btn-danger p-3 m-3 text-white" id="popcart"
+            data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom"
+            data-bs-content="Bottom popover" data-html="true"> <i class="fa-solid fa-cart-shopping"></i> cart(<span
+              id="cart">0</span>)
+          </button>
+
+          {% if request.user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="/auth/logout/"><i
+                class="fa-sharp fa-solid fa-right-from-bracket"></i>LogOut</a></li>
+          {% else %}
+          <li class="dropdown"><a href="#"><span>SignIn</span> <i class="bi bi-chevron-down">
+
+              </i></a>
             <ul>
               <li><a href="/auth/signup/"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>SignUP</a></li>
               <li><a href="/auth/login/"><i class="fa-sharp fa-solid fa-right-to-bracket"></i>LogIn</a></li>
-              
-            
-            
+
+
+
             </ul>
           </li>
-         {% endif %}
-         
-         
-         
-          <li><a class="nav-link scrollto bg-success pd-3"  href="/contact"><i class="fa-solid fa-address-book">  Contact</i></a></li>
+          {% endif %}
+
+
+
+          <li><a class="nav-link scrollto bg-success pd-3" href="/contact"><i class="fa-solid fa-address-book">
+                Contact</i></a></li>
           <!-- <li><a class="nav-link scrollto bg-primary pd-3" href="/contact">Cart</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -89,14 +97,14 @@
   <section id="hero">
     <div class="hero-container">
       {% block content %}
-
+      
       {% endblock content %}
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-{% block body %}
-{% endblock body %}
+    {% block body %}
+    {% endblock body %}
 
   </main><!-- End #main -->
 
@@ -113,8 +121,8 @@
               A108 Adam Street <br>
               New York, NY 535022<br>
               United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> +916387542083<br>
+              <strong>Email:</strong> ankushverma3242@gmail.com<br>
             </p>
           </div>
 
@@ -144,7 +152,10 @@
             <h4>Join Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control p-2" id="email" aria-describedby="emailHelp" name="email">
+
+              <input type="submit" value="Subscribe">
             </form>
           </div>
 
@@ -159,7 +170,7 @@
           &copy; Copyright <strong><span>Tempo</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-        
+
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
@@ -173,7 +184,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

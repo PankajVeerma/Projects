@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+  <h1>Todo</h1>
+  <div class="container">
+<!-- This is the container that holds the table of homework details. -->
+ {% if not homework_done %}
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todo in todos %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+         
+          <td>{{todo.title}}</td>
+          <td>
+            <a href="{% url 'update_todo' todo.id %}">
+              <div>
+                {% if todo.is_finished == True %}
+                <input type="checkbox" name="status" id="status" value="status" checked>
+                {% else %}
+                <input type="checkbox" name="status" id="status" value="status">
+                {% endif %}
+                <label >Mark as completed</label>
+               
+              </div>
+            </a>
+          </td>
+          <td><a href="{% url 'dalete_todo' todo.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+<!-- This is the for loop that iterates over the hometodo queryset and displays the hometodo details in a table. -->
+      </tbody>
+    </table>
+    {% else %}
+    <h4>All Todo is completed! Create to have more</h4>
+    {% endif %}
+  </div>
+  <div class="container">
+    <form action="" method='post'>
+      {% csrf_token %}
+      <fieldset>
+        <legend>Add Todos</legend>
+        {{form}}
+      </fieldset>
+      <div>
+        <button type='submit'>Create</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+
+{% endblock content %}

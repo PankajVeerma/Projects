@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+  <h2>Student Dictonary</h2>
+  <p>Just Enter the words to search the Phonetics, definition and an example for the word</p>
+  <form method="post">
+    {% csrf_token %} 
+    {{form}}
+    <input type="submit" name="search" id="search" placeholder="Search Books" value="submit" />
+  </form>
+  <div class="content-section">
+    {% if input %}
+    <div class="custom-header">
+      <h2>{{input}}</h2>
+      <h6>{{phonetics}}</h6>
+      <audio src="{{audio}}" id="player"></audio>
+      <div><a onclick="document.getElementById('player').play()"Sound href=""></a></div>
+    </div>
+    <p>
+      <h4>
+        Definition : {{definition}}
+      </h4>
+      <h4>Example:{{example}}</h4>
+    </p>
+    Synonyms:
+    {% for synonym in synonyms %}
+               {{synonym}}   
+    {% endfor %}
+    <hr>
+  </div>
+  {% else %}
+  <h2>Sorry Api Request Limit exceeded</h2>
+  {% endif %}
+</section>
+  {% endblock content %}

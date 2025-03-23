@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+ {% load static %}
+ 
+  {% block content %}
+
+
+
+  <hr>
+  <br>
+  <br><br>
+
+  <div class="container">
+    {% for note in notes %}
+  <a href="{% url 'note_detail' note.id %}">
+    <div class="card">
+      <div class="card-header">{{note.title}}</div>
+      <div class="card-body">{{note.description | slice:"0:100"}}</div>
+      <div class="card-footer"><a href="{% url 'delete_notes' note.id %}">Delete</a></div>
+          <i></i>
+        </a>
+      </div>
+    </div>
+  </a>
+  </div>
+  {% endfor %}
+<br>
+<br>
+  <div class="container">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend>Create Notes</legend>
+      </fieldset>
+      {{form}}
+      <div class="form-group">
+        <button href="#">Create</button>
+    </form>
+  </div>
+  {% endblock content %}

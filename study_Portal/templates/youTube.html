@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+  <h2>Search Videos in YouTube</h2>
+  <p>Search video and select any video to open in YouTube</p>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="submit">
+  </form>
+  <br>
+  {% for result in results %}
+  <a href="{{result.link}}" target="_blank">
+    <div>
+      <div>
+        <div>
+          <div><img src="{{result.thumbnail}}" alt="youtube"></div>
+          <div>
+            <h3>{{result.title}}</h3>
+            <b>
+              <u>
+                <h5>
+                  {{result.channel}}
+                </h5>
+              </u>
+            </b>
+            <h6>
+              {{result.description}}
+            </h6>
+            <b>
+              <h6>{{result.duration}}</h6>
+              <h6>{{result.views}}</h6>
+              <h6>{{result.published}}</h6>
+            </b>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+
+
+{% endblock content %}

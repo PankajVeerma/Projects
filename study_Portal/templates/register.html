@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <form action="{% url 'login' %}" method>
+    {% csrf_token %}
+    <fieldset class = 'form-group'>
+      <legend class='border-bottom'>
+        Joind Today
+      </legend>
+      {{form}}
+    </fieldset>
+    <div class="form-group">
+      <button href="" class="btn" type+"submit"> Sign Up</button>
+    </div>
+  </form>
+  <div class="border-top"> <small class = "test-muted">Already have an Account <a href="">Sign In</a></small></div>
+</div>
+
+{% endblock content %}

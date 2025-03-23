@@ -1,4 +1,5 @@
 {% autoescape off %}
-hi{{user.username}}Please Click
-http://{{domain}}{%url 'activate' uidb64=uid token=token%}
+Hi{{user.username}}
+Please Click This link Below To Verify YOur Account
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
 {% endautoescape %}

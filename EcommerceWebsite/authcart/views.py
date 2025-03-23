@@ -12,20 +12,20 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth import authenticate,login,logout
-# from django.contrib.auth.tokens import PasswordResetTokenGeneratorReset
+#from django.contrib.auth.tokens import PasswordResetTokenGeneratorReset
 # Create your views here.
 def signup(request):
     if request.method=="POST":
-        email=request.POST['exampleInputEmail']
-        password=request.POST['exampleInputPassword1']
-        confirm_password=request.POST['exampleInputPassword2']
-        if password!=confirm_password:
+        email=request.POST['email']
+        password=request.POST['Pass1']
+        confirm_password=request.POST['Pass2']
+        if password != confirm_password:
             messages.warning(request,"Password is Not Matching")
             return render(request,'signup.html')                   
         try:
             if User.objects.get(username=email):
                 # return HttpResponse("email already exist")
-                messages.info(request,"Email is Taken")
+                messages.info(request,"Email already exist")
                 return render(request,'signup.html')
         except Exception as identifier:
             pass
@@ -38,7 +38,6 @@ def signup(request):
             'domain':'127.0.0.1:8000',
             'uid':urlsafe_base64_encode(force_bytes(user.pk)),
             'token':generate_token.make_token(user)
-
         })
 
         # email_message = EmailMessage(email_subject,message,settings.EMAIL_HOST_USER,[email])
@@ -47,9 +46,9 @@ def signup(request):
         return redirect('/auth/login/')
     return render(request,"signup.html")
 class ActivateAccountView(View):
-    def get(self,request,uid64,token):
+    def get(self,request,uidb64,token):
         try:
-            uid = force_text(urlsafe_base64_dencode(uid))
+            uid = force_text(urlsafe_base64_decode(uid))
             user = user.object.get(pk=uid)
         except Exception as identifier:
             user=None
@@ -61,16 +60,14 @@ class ActivateAccountView(View):
         return render(request,'activatefail.html')
 def handlelogin(request):
   if request.method=="POST":
-
-        username=request.POST['exampleInputEmail']
-        userpassword=request.POST['exampleInputPassword']
+        username=request.POST['email']
+        userpassword=request.POST['Pass1']
         myuser=authenticate(username=username,password= userpassword)
-
+        print(myuser)
         if myuser is not None:
             login(request,myuser)
             messages.success(request,"Login Success")
             return redirect('/')
-
         else:
             messages.error(request,"Invalid Credentials")
             return redirect('/auth/login')
