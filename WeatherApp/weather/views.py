@@ -11,12 +11,14 @@ def index(request):
       data={}
       city= 'New Delhi'
       city = str(request.GET.get('search','Delhi'))
-      api_key = "Enter your own APi Key"
+      api_key = "516e5492d88e639900a36168fff7d4e6"
       base_url = "https://api.openweathermap.org/data/2.5/weather?q="
   
       complete_Url= base_url + city  + "&appid="  + api_key
       response =requests.get(complete_Url)
+    
       data_formate  = response.json()
+      print(data_formate)
       kelvin = data_formate["main"]["temp"]
       Celsius = round(kelvin - 273.15 ) 
       wind_speed = data_formate["wind"]["speed"]
