@@ -7,7 +7,7 @@
     {% csrf_token %}
     <fieldset class = 'form-group'>
       <legend class='border-bottom'>
-        Joind Today
+        Joined Today
       </legend>
       {{form}}
     </fieldset>
@@ -15,7 +15,7 @@
       <button href="" class="btn" type+"submit"> Sign Up</button>
     </div>
   </form>
-  <div class="border-top"> <small class = "test-muted">Already have an Account <a href="">Sign In</a></small></div>
+  <div class="border-top"> <small class = "test-muted">Already have an Account <a href="{% url 'login' %}">Sign In</a></small></div>
 </div>
 
 {% endblock content %}

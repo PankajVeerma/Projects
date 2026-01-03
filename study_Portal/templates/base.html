@@ -1,3 +1,5 @@
+{% comment %} https://www.youtube.com/watch?v=XvU0QXqDQ1Y {% endcomment %}
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -5,53 +7,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Study Portal</title>
-    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="stylesheet" href="{% static 'studyIndex.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <h1><a href="#">Student Study</a></h1>
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Profile</a></li>
-        </ul>
+    <navbar class="navbar">
+      <h1 class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'image/logo.png' %}" alt="">
+        </a>
+      </h1>
+      <div>
+        <ul class="nav-list">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">Profile</a></li>
 
-        <ul class="nav-links">
-          <li><a href="#">Books</a></li>
-          <li><a href="#">Wikipedia</a></li>
-          <li><a href="#">Dictonary</a></li>
-          <li><a href="#">YouTube</a></li>
-          <li><a href="#">To-do</a></li>
-          <li><a href="#">Homework</a></li>
-          <li><a href="#">Notes</a></li>
-          <li><a href="#">Conversion</a></li>
+          <li><a href="{% url 'books' %}">Books</a></li>
+          <li><a href="{% url 'wikipedia' %}">Wikipedia</a></li>
+          <li><a href="{% url 'dictionary' %}">Dictonary</a></li>
+          <li><a href="{% url 'youtube' %}">YouTube</a></li>
+          <li><a href="{% url 'todo' %}">To-do</a></li>
+          <li><a href="{% url 'homework' %}">Homework</a></li>
+          <li><a href="{% url 'notes' %}">Notes</a></li>
+          <li><a href="{% url 'conversion' %}">Conversion</a></li>
+
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+
+          <li><a href="{% url 'register' %}">Register</a></li>
+          {% endif %}
         </ul>
-        <ul class="nav-links">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Logout</a></li>
-          <li><a href="#">Register</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      {% if messages %}
-       {% for msg in messages %}
+      </div>
+    </navbar>
+
+    <main class="container">
+      {% if messages %} {% for msg in messages %}
       <div>
         <h3>{{msg.tags}}</h3>
         <h5>{{msg}}</h5>
       </div>
-      {% endfor %} 
-      {% endif %}
-       {% block content %}
-       
-        {% endblock %}
+
+      {% endfor %} {% endif %} {% block content %} {% endblock %}
     </main>
-    <footer>
-      <p>&copy; 2025 Study Portal</p>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div  class="footer-address">
+          <h3>Contact Us</h3>
+          <div class="row">
+            <p>Address: sector-44,  Noida,  India</p>
+            <p>Email: pankajverma3242@gmail.com</p>
+            <p>Phone: 6387542083</p>
+          </div>
+        </div>
+        <div>
+          <div class="contact-logo-items">
+            <h3>Connect With Us</h3>
+            <ul class="list-inline">
+              <li>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-geekforgeek"></i></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/pankajverma7197/?__pwa=1"><i class="fab fa-instagram"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center">
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+      </div>
     </footer>
   </body>
 </html>

@@ -16,5 +16,6 @@ urlpatterns = [
     path('dictionary',views.dictionary,name="dictionary"),
     path('wikipedia',views.wikipedia,name="wikipedia"),
     path('conversion',views.conversion,name="conversion"),
-    path('profile/<int:pk>',views.profile,name="profile"),
+   
+   
 ]

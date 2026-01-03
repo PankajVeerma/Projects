@@ -6,6 +6,7 @@ from youtubesearchpython import VideosSearch
 from . models import *
 import requests
 import wikipedia
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -34,9 +35,10 @@ def delete_notes(request,pk=None):
   notes.delete()
   messages.success(request, 'Notes deleted successfully')
   return redirect('notes')
+
 class NotesDetailView(generic.DetailView):
   model = Notes
-
+@login_required
 def homework(request):
   if request.method == 'POST':
     form = HomeworkForm(request.POST) 
@@ -75,7 +77,7 @@ def homework(request):
     'form':form,
   }
   return render(request, './homework.html',context)
-
+@login_required
 def update_homework(request,pk=None):
   homework = Homework.objects.get(id=pk)
   if homework.is_finished  == True:
@@ -85,7 +87,7 @@ def update_homework(request,pk=None):
   homework.save()        
   return redirect('homework')
 
-
+@login_required
 def dalete_homework(request,pk=None):
   homework = Homework.objects.get(id=pk)
   homework.delete()
@@ -93,11 +95,12 @@ def dalete_homework(request,pk=None):
   return redirect('homework')
 
 # This feature is not working it give errors
+
 def youTube(request):
   if request.method == 'POST':
     form = DashboardForm(request.POST)
     text = request.POST['text']
-    video = VideosSearch(text, limit=10)
+    video = VideosSearch(text)
     result_list = []
     for i in video.result()['result']:
       result_dict = {
@@ -130,7 +133,7 @@ def youTube(request):
   }
   return render(request, './youTube.html',context)
 
-
+@login_required
 def Todo_list(request):
   todo = Todo.objects.filter(user=request.user)
   if request.method == 'POST':
@@ -168,7 +171,7 @@ def Todo_list(request):
   }
   return render(request, './todo.html',context)
 
-
+@login_required
 def update_todo(request,pk=None):
   todo = Todo.objects.get(id=pk)
   if todo.is_finished  == True:
@@ -178,7 +181,7 @@ def update_todo(request,pk=None):
   todo.save()        
   return redirect('todo')
 
-
+@login_required
 def dalete_todo(request,pk=None):
   todo = Todo.objects.get(id=pk)
   todo.delete()
@@ -252,7 +255,7 @@ def dictionary(request):
         'form':form,
         'input':text
        }
-    print(context['synonyms'])
+   
     return render(request,'./dictonary.html',context)
   else:
     
@@ -279,6 +282,7 @@ def wikipedia(request):
       'form':form
       }
   return render(request,'./wikipedia.html',context)
+
 def conversion(request):
   if request.method=='POST':
     form = ConversionForm(request.POST)
@@ -356,22 +360,28 @@ def register(request):
   }
   return render(request,"./register.html",context)
 
-
+@login_required
 def profile(request):
-  homeworks = Homework.objects.filter(is_finished=False, user=request.user)   
-  todos = Todo.objects.filter(is_finished = False, user=request.user)   
-  if len(homeworks) ==0:
+  homeworks = Homework.objects.filter(is_finished=False, user=request.user)
+  todos = Todo.objects.filter(is_finished=False, user=request.user)
+  if len(homeworks) == 0:
     homework_done = True
+    messages.info(request, 'No homework')
   else:
     homework_done = False
-  if len(todos) ==0:
+    messages.info(request, 'homework Pending')
+  if len(todos) == 0:
     todo_done = True
+    messages.info(request, 'No todo')
   else:
     todo_done = False
-  contex= {
+    messages.info(request, 'todo Pending')
+  context = {
     'homeworks':homeworks,
     'todos':todos,
-    'homework_done':homework_done,
-    'todo_done':todo_done
-  }        
-  return render(request,'profile.html',contex) 
+    'homeworks_done':homework_done,
+    'todos_done':todo_done
+  }
+  
+        
+  return render(request,'profile.html') 

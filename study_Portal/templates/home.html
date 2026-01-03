@@ -1,17 +1,16 @@
 {% extends "base.html" %}
  {% load static %}
   {% block content %}
-  <div>
-    <h3>WellCome</h3>
-  </div>
+  <link rel="stylesheet" href="{% static 'studyhome.css' %}" />
   <hr />
   <br />
 <section class="cards-items">
   <div>
-    <a href="#">
+    <a href="{% url 'notes' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Notes</h3>
+        <img src="{% static 'image/notebook-page-5058707_1280.jpg' %}" alt="Notes" />
+        
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
@@ -19,70 +18,77 @@
   </div>
 
   <div>
-    <a href="#">
+    <a href="{% url 'homework' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Homework</h3>
+        <img src="{% static 'image/homework-5929445_1280.jpg' %}" alt="Notes" />
+       
         Add homework to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href="{% url 'youtube' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Youtube</h3>
+        <img src="{% static 'image/youtube-6621791_1280.jpg' %}" alt="Notes" />
+       
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href="{% url 'dictionary' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Dictionary</h3>
+        <img src="{% static 'image/education-4382169_1280.jpg' %}" alt="Notes" />
+       
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href="{% url 'todo' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Todo</h3>
+        <img src="{% static 'image/todo-lists-5238324_1280.jpg' %}" alt="Notes" />
+     
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href="{% url 'books' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Books</h3>
+        <img src="{% static 'image/spring-7098130_1280.jpg' %}" alt="Notes" />
+       
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href="{% url 'wikipedia' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Wikipedia</h3>
+        <img src="{% static 'image/wikipedia-1802614_1280.jpg' %}" alt="Notes" />
+       
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
     </a>
   </div>
   <div>
-    <a href="#">
+    <a href=" {% url 'conversion' %}">
       <div class="card">
-        <img src="{% static 'images/notes.jpg' %}" alt="Notes" />
         <h3>Conversion</h3>
+        <img src="{% static 'image/change-4056014_1280.jpg' %}" alt="Notes" />
+       
         create Note to refer them later. they are stored permanently untill
         deleted.
       </div>
