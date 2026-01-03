@@ -1,0 +1,29 @@
+ 
+Install python 
+Install Rest_framework
+install django
+install Mysql
+
+To run the project:
+python manage.py runserver :
+For Creating, Updating, Deleting, Posting  the books through  Rest_APi
+      urls: http://127.0.0.1:8000/api/studentapi/
+
+
+For Accessing the books for a Student:
+      urls: http://127.0.0.1:8000
+
+
+
+
+
+ project structure explanation:
+
+ create a Library_Management project
+   inside the project we create to app 
+    first one is for Rest_framework (library)
+    second one is student_view  for accesssing the books 
+
+
+
+Note: Due to less time I can not implement login Authentication  but i tried it. 
