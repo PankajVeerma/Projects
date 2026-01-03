@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from login import views
+from loginapp import views
 
 urlpatterns = [
     path('index',views.index, name='index'),

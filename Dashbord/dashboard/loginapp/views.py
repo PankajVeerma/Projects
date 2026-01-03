@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse
 from django.shortcuts import redirect
-# from django import SignUpForm,loginForm
+from django import SignUpForm,loginForm
 from django.contrib.auth import authenticate  
 
 # Create your views here.
